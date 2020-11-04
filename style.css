@@ -1,0 +1,72 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    background-color: white;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+header {
+    height: 70px;
+    background-color: aqua;
+}
+
+#forside_medie_1 {
+    height: 450px;
+    background-color: #bfbfbf;
+}
+
+#tekst_1 {
+    height: 450px;
+    background-color: #9f9bff;
+}
+
+#tekst_2 {
+    height: 350px;
+    background-color: #262674
+}
+
+#forside_medie_2 {
+    height: 250px;
+    background-color: #bfbfbf;
+}
+
+#cta {
+    height:300px;
+    background-color: white
+}
+
+#cta_buttons div {
+    border: 2px solid orange;
+}
+
+#galleri {
+    height:450px;
+    background-color: greenyellow
+}
+
+#some_link div {
+    height: 50px;
+    width: 50px;
+    border: 4px solid #cdc6f5;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    height: 600px;
+    background-color: #6680d0
+}
