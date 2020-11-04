@@ -13,6 +13,8 @@ header {
     background-color: aqua;
 }
 
+/*forside styling*/
+
 #forside_medie_1 {
     height: 450px;
     background-color: #bfbfbf;
@@ -25,7 +27,7 @@ header {
 
 #tekst_2 {
     height: 350px;
-    background-color: #262674
+    background-color: #262674;
 }
 
 #forside_medie_2 {
@@ -35,7 +37,7 @@ header {
 
 #cta {
     height:300px;
-    background-color: white
+    background-color: white;
 }
 
 #cta_buttons div {
@@ -44,29 +46,73 @@ header {
 
 #galleri {
     height:450px;
-    background-color: greenyellow
+    background-color: greenyellow;
 }
 
-#some_link div {
+/* Fag styling */
+
+#top_box {
+    height: 400px;
+    background-color: #1d1d64;
+}
+
+#speciale_fag .content {
+
+}
+
+/* om os styling */
+
+#omos #tekst_1 {
+    background-color: #1d1d64;
+}
+
+#image_container {
+    height: 400px;
+    background-color: grey;
+}
+
+#header_2 {
+    background-color: #3a3a86;
+}
+
+/* tilmelding */
+
+#tilmelding {
+    background-color: #25259d;
+}
+
+
+
+/* footer styling */
+
+footer {
+    height: 600px;
+    background-color: #6680d0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#some_link {
+
+}
+
+#row_1, #row_2 {
+    display: flex;
+    flex-direction: row;
+}
+
+#row_1 div {
     height: 50px;
     width: 50px;
     border: 4px solid #cdc6f5;
     border-radius: 50%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-footer {
-    height: 600px;
-    background-color: #6680d0
+#row_2 div {
+    height: 50px;
+    width: 50px;
+    border: 4px solid #cdc6f5;
+    border-radius: 50%;
 }
