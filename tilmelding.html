@@ -15,19 +15,13 @@
     </header>
     <main>
         <section id="tilmelding">
-            <h1>PRISER OG TILMELDING</h1>
-            <h2>overskrift</h2>
-            <p>asd</p>
-            <h2>overskrift</h2>
-            <p>asd</p>
-            <h2>overskrift</h2>
-            <p>asd</p>
-            <h2>overskrift</h2>
-            <p>asd</p>
+
         </section>
         <section id="tilmeld_cta">
-            <h2>TILDMELD DIG</h2>
-            <div id="tilmeld_knap"><h3>tilmeld</h3></div>
+
+            <div id="tilmeld_knap">
+
+            </div>
             <img src="" alt="">
         </section>
     </main>
@@ -53,9 +47,30 @@
             Bank: Broager Sparekasse l Reg: 9797 Konto: 0001116150 l SWIFT: BRSLDK21 l IBAN: DK2597970001116150
         </p>
     </footer>
-    <script src="javascript.js"></script>
+
     <script>
-    document.addEventListener("DOMContentLoaded", loadTilmeldingContent);
+        function loadTilmeldingContent() {
+            console.log("loadTilmelding");
+        }
+
+        let tilmelding
+
+        document.addEventListener("DOMContentLoaded", loadTilmeldingContent);
+
+
+        async function loadTilmeldingContent() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/192";
+            let jsonData = await fetch(url);
+            tilmelding = await jsonData.json();
+            console.log("LOADING DONE");
+
+            document.querySelector("#tilmelding").innerHTML = tilmelding.content.rendered;
+
+        }
     </script>
 
 </body></html>
+<script>
+
+
+</script>
