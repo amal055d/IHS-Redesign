@@ -35,7 +35,7 @@ function loadGlobalContent() {
 function loadHeaderContent() {
     console.log("loadHeader");
     if (id == 264) {
-   document.querySelector("#logo img").src = etFag.media.guid;
+        document.querySelector("#logo img").src = etFag.media.guid;
     }
 }
 
@@ -46,10 +46,6 @@ function loadFooterContent() {
 
 function loadFrontContent() {
     console.log("loadForside");
-}
-
-function loadOmContent() {
-    console.log("loadOmOs");
 }
 
 function loadFagContent() {

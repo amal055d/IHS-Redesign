@@ -4,13 +4,16 @@ body {
     background-color: white;
 }
 
-h1, h2, h3, p {
+h1,
+h2,
+h3,
+p {
     margin: 0;
 }
 
 header {
     height: 70px;
-    background-color: aqua;
+    background-color: white;
 }
 
 /*forside styling*/
@@ -36,7 +39,7 @@ header {
 }
 
 #cta {
-    height:300px;
+    height: 300px;
     background-color: white;
 }
 
@@ -45,7 +48,7 @@ header {
 }
 
 #galleri {
-    height:450px;
+    height: 450px;
     background-color: greenyellow;
 }
 
@@ -56,12 +59,16 @@ header {
     background-color: #1d1d64;
 }
 
-#speciale_fag .content {
-
-}
+#speciale_fag .content {}
 
 /* om os styling */
 
+#indhold h2 {
+    color: #FF7F00;
+}
+
+
+/*
 #omos #tekst_1 {
     background-color: #1d1d64;
 }
@@ -74,6 +81,7 @@ header {
 #header_2 {
     background-color: #3a3a86;
 }
+*/
 
 /* tilmelding */
 
@@ -87,18 +95,17 @@ header {
 
 footer {
     height: 600px;
-    background-color: #6680d0;
+    background-color: #274976;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-#some_link {
+#some_link {}
 
-}
-
-#row_1, #row_2 {
+#row_1,
+#row_2 {
     display: flex;
     flex-direction: row;
 }
