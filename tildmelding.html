@@ -5,14 +5,72 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IHS</title>
-    <link rel="stylesheet" href="">
-    <script src=""></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <header>
+        <div id="logo"></div>
+        <div id="burger"></div>
+    </header>
+    <main>
+        <section id="tilmelding">
 
-    <script src="javascript.js"></script>
+        </section>
+        <section id="tilmeld_cta">
 
-</body>
+            <div id="tilmeld_knap">
 
-</html>
+            </div>
+            <img src="" alt="">
+        </section>
+    </main>
+    <footer>
+        <h2>FIND OS HER</h2>
+        <div id="some_link">
+            <div id="row_1">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div id="row_2">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div id="højskole_trustpilot">
+            <img src="" alt="">
+            <img src="" alt="">
+        </div>
+        <p>Idrætshøjskolen Sønderborg l Friheds allé 42 l 6400 Sønderborg l (+45) 7442 1848 l CVR 35902619 l info@ihs.dk
+            Bank: Broager Sparekasse l Reg: 9797 Konto: 0001116150 l SWIFT: BRSLDK21 l IBAN: DK2597970001116150
+        </p>
+    </footer>
+
+    <script>
+        function loadTilmeldingContent() {
+            console.log("loadTilmelding");
+        }
+
+        let tilmelding
+
+        document.addEventListener("DOMContentLoaded", loadTilmeldingContent);
+
+
+        async function loadTilmeldingContent() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/192";
+            let jsonData = await fetch(url);
+            tilmelding = await jsonData.json();
+            console.log("LOADING DONE");
+
+            document.querySelector("#tilmelding").innerHTML = tilmelding.content.rendered;
+
+        }
+    </script>
+
+</body></html>
+<script>
+
+
+</script>
