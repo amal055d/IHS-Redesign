@@ -14,10 +14,22 @@
         <div id="burger"></div>
     </header>
     <main>
-        <section id="indhold">
-
+        <section id="tilmelding">
+            <h1>PRISER OG TILMELDING</h1>
+            <h2>overskrift</h2>
+            <p>asd</p>
+            <h2>overskrift</h2>
+            <p>asd</p>
+            <h2>overskrift</h2>
+            <p>asd</p>
+            <h2>overskrift</h2>
+            <p>asd</p>
         </section>
-
+        <section id="tilmeld_cta">
+            <h2>TILDMELD DIG</h2>
+            <div id="tilmeld_knap"><h3>tilmeld</h3></div>
+            <img src="" alt="">
+        </section>
     </main>
     <footer>
         <h2>FIND OS HER</h2>
@@ -37,26 +49,13 @@
             <img src="" alt="">
             <img src="" alt="">
         </div>
-        <p>
-            Idrætshøjskolen Sønderborg l Friheds allé 42 l 6400 Sønderborg l (+45) 7442 1848 l CVR 35902619 l info@ihs.dk
+        <p>Idrætshøjskolen Sønderborg l Friheds allé 42 l 6400 Sønderborg l (+45) 7442 1848 l CVR 35902619 l info@ihs.dk
             Bank: Broager Sparekasse l Reg: 9797 Konto: 0001116150 l SWIFT: BRSLDK21 l IBAN: DK2597970001116150
         </p>
     </footer>
     <script src="javascript.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", loadOmContent);
-
-        let omOs;
-
-        async function loadOmContent() {
-            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/273";
-            let jsonData = await fetch(url);
-            omOs = await jsonData.json();
-            console.log("LOADING DONE");
-
-            document.querySelector("#indhold").innerHTML = omOs.content.rendered;
-
-        }
+    document.addEventListener("DOMContentLoaded", loadTilmeldingContent);
     </script>
 
 </body></html>
