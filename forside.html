@@ -14,36 +14,10 @@
         <div id="burger"></div>
     </header>
     <main>
-        <section id="forside_1">
-            <div id="forside_medie_1">
-                <img src="" alt="">
-                <h1>baggrunds billede</h1>
-            </div>
-            <div id="tekst_1">
-                <h2>OVERSKRIFT</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            </div>
-        </section>
-        <section id="forside_2">
-            <div id="tekst_2">
-                <h2>OVERSKRIFT</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            </div>
-            <div id="forside_medie_2">
-                <!-- iframe placeholder-->
-            </div>
-        </section>
-        <section id="cta">
-            <h2>VI GLÆDER OS TIL AT MØDE JER</h2>
-            <div id="cta_buttons">
-                <div>
-                    <h3>se vores fag</h3>
-                </div>
-                <div>
-                    <h3>book en rundvisning</h3>
-                </div>
-            </div>
-        </section>
+
+        <section id="indhold"></section>
+
+
         <section id="galleri">
             <img>
         </section>
@@ -66,6 +40,18 @@
     </footer>
     <script src="javascript.js"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", loadFrontContent);
+        let forsiden;
+
+        document.addEventListener("DOMContentLoaded", loadFrontContent);
+
+        async function loadFrontContent() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/5";
+            let jsonData = await fetch(url);
+            forsiden = await jsonData.json();
+            console.log("LOADING DONE");
+
+            document.querySelector("#indhold").innerHTML = forsiden.content.rendered;
+
+        }
     </script>
 </body></html>
