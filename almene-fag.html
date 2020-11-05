@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IHS</title>
+    <link rel="stylesheet" href="">
+
+</head>
+<style>
+</style>
+
+<body>
+
+    <main>
+
+    </main>
+
+    <div id="fold-ud1"></div>
+    <div id="fold-ud2"></div>
+    <div id="fold-ud3"></div>
+    <div id="fold-ud4"></div>
+    <div id="fold-ud5"></div>
+
+    <template></template>
+
+
+    <script>
+        let almenefag;
+
+        document.addEventListener("DOMContentLoaded", loadContent);
+
+        async function loadContent() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/232";
+            let jsonData = await fetch(url);
+            almenefag = await jsonData.json();
+            console.log("LOADING DONE");
+
+            document.querySelector("main").innerHTML = almenefag.content.rendered;
+
+        }
+    </script>
+
+
+
+
+</body></html>
