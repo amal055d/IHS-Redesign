@@ -6,6 +6,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IHS</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        figure {
+            display: block;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+        }
+
+        .overskrift1 {
+            color: #274976;
+            padding: 40px 40px 0;
+        }
+
+        .overskrift2 {
+            padding: 40px 40px 0;
+        }
+
+        .group1 {
+            background-color: #87A4CB;
+            margin-top: -4px;
+        }
+
+        .group2 {
+            background-color: #274976;
+        }
+
+        p {
+            padding: 10px 40px 40px;
+            color: white;
+        }
+
+        .forside_video {
+            height: 27vh;
+        }
+
+        .cta_overskrift {
+            color: #274976;
+            padding: 70px 40px 0;
+            text-align: center;
+        }
+
+        button {
+            border: 2px solid #FF7F00;
+            background-color: white;
+            color: #FF7F00;
+            width: 180px;
+            height: 50px;
+            margin: 0 auto;
+        }
+
+        .knapper {
+            display: flex;
+            width: 100vw;
+            margin: 70px 0;
+        }
+
+        @media(min-width: 900px) {
+
+            .video_group .wp-block-group__inner-container {
+                display: flex;
+                flex-direction: row-reverse;
+            }
+
+            .group2 .wp-block-group__inner-container {
+                display: block;
+            }
+
+            .forside_video {
+                flex-basis: 80vw;
+                flex-grow: 1;
+                /* max-width: 73vw; */
+                height: 36vw;
+            }
+
+            .group2 {
+                flex-basis: 45vw;
+                flex-grow: 1;
+                max-width: 45vw;
+                height: 36vw;
+            }
+
+            .overskrift1 {
+                padding: 70px 100px 0;
+            }
+
+            .group1 p {
+                padding: 10px 100px 70px;
+            }
+
+            .knapper {
+                display: flex;
+                width: 40vw;
+                margin: 70px auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -17,6 +119,10 @@
 
         <section id="indhold"></section>
 
+        <div class="knapper">
+            <button>SE VORES FAG</button>
+            <button>BOOK EN RUNDVISNING</button>
+        </div>
 
         <section id="galleri">
             <img>
