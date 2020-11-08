@@ -33,10 +33,10 @@ function loadGlobalContent() {
 
 
 function loadHeaderContent() {
-    console.log("loadHeader");
-    if (id == 264) {
-        document.querySelector("#logo img").src = etFag.media.guid;
-    }
+   // console.log("loadHeader");
+    //if (id == 264) {
+      //  document.querySelector("#logo img").src = etFag.media.guid;
+  //  }
 }
 
 function loadFooterContent() {

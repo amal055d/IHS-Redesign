@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IHS</title>
+    <link rel="stylesheet" href="">
+    <script src=""></script>
+</head>
+
+<body>
+
+    <main>
+        <section id="tekst-container">
+        </section>
+
+        <section id="fold-ud">
+            <template>
+                <div class="container">
+                    <h2 class="title"></h2>
+                    <p class="tekst"></p>
+
+                </div>
+
+            </template>
+        </section>
+    </main>
+
+
+    <script>
+        let kurser;
+        let temp = document.querySelector("template");
+        let container = document.querySelector("#fold-ud");
+
+        document.addEventListener("DOMContentLoaded", loadContent);
+        document.addEventListener("DOMContentLoaded", loadFoldUd);
+
+        async function loadContent() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/240";
+            let jsonData = await fetch(url);
+            kurser = await jsonData.json();
+            console.log("LOADING DONE");
+
+            document.querySelector("#fold-ud").innerHTML = kurser.content.rendered;
+
+        }
+
+        async function loadFoldUd() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/posts/?categories=5";
+            let jsonData = await fetch(url);
+            kurser = await jsonData.json();
+            console.log("LOADING DONE");
+
+            kurser.forEach(kurserOgLinjer => {
+
+                const klon = temp.cloneNode(true).content;
+                klon.querySelector(".title").textContent = kurserOgLinjer.title.rendered;
+                klon.querySelector(".tekst").innerHTML = kurserOgLinjer.content.rendered;
+
+                container.appendChild(klon); //klones til DOM
+
+            })
+
+        }
+    </script>
+
+
+
+
+</body></html>

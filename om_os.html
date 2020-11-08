@@ -17,6 +17,16 @@
         <section id="indhold">
 
         </section>
+        <section id="fold_ud_section">
+            <template>
+                <div class="container">
+                    <h2 class="om_os_h2"></h2>
+                    <div class="om_os_tekst"></div>
+                </div>
+
+
+            </template>
+        </section>
 
     </main>
     <footer>
@@ -56,6 +66,32 @@
 
             document.querySelector("#indhold").innerHTML = omOs.content.rendered;
 
+        }
+
+        async function loadOmos() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/posts/?categories=10";
+            let json = await fetch(url);
+
+            omOsFoldUd = await json.json();
+            vis(json);
+        }
+
+        let container = document.querySelector("#fold_ud_section");
+        let temp = document.querySelector("template");
+
+
+        function vis(omOsFoldUd) {
+            console.log("omOsload");
+
+            omOsFoldUd.forEach(foldUd => {
+
+                const klon = temp.cloneNode(true).content;
+                klon.querySelector(".om_os_h2").textContent = foldUd.title.rendered;
+                klon.querySelector(".om_os_tekst").innerHTML = foldUd.content.rendered;
+
+                container.appendChild(klon); //klones til DOM
+
+            })
         }
     </script>
 

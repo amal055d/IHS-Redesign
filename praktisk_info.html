@@ -14,20 +14,15 @@
         <div id="burger"></div>
     </header>
     <main>
+        <h1>Praktisk information</h1>
         <section id="praktisk_info">
-            <h1>OVERSKRIFT</h1>
             <template>
-                <article>
-                    <div class="content">
-                        <div class="closed_box">
-                            <h2></h2>
-                            <div class="arrow"></div>
-                        </div>
-                        <div class="collapsed_box">
-                            <p></p>
-                        </div>
-                    </div>
-                </article>
+                <div class="container">
+                    <h2 class="praktisktitle"></h2>
+                    <p class="pratisktekst"></p>
+                </div>
+
+
             </template>
         </section>
     </main>
@@ -55,7 +50,36 @@
     </footer>
     <script src="javascript.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", loadPratiskContent);
+        let praktiskInfo;
+
+        document.addEventListener("DOMContentLoaded", loadPraktisk);
+
+        async function loadPraktisk() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/posts/?categories=11";
+            let json = await fetch(url);
+
+            praktisk = await json.json();
+            vis(json);
+        }
+
+
+        let container = document.querySelector("#praktisk_info");
+        let temp = document.querySelector("template");
+
+
+        function vis(pratisk) {
+            console.log("pratiskload");
+
+            praktisk.forEach(praktisk => {
+
+                const klon = temp.cloneNode(true).content;
+                klon.querySelector(".praktisktitle").textContent = praktisk.title.rendered;
+                klon.querySelector(".pratisktekst").innerHTML = praktisk.content.rendered;
+
+                container.appendChild(klon); //klones til DOM
+
+            })
+        }
     </script>
 
 </body></html>
