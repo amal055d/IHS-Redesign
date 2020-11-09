@@ -15,6 +15,10 @@
             padding: 20px;
         }
 
+        .container:last-child {
+            margin-bottom: 25px;
+        }
+
         .container p {
             color: #FFFFFF;
         }
@@ -68,10 +72,9 @@
                     <h2 class="praktisktitle"></h2>
                     <p class="pratisktekst"></p>
                 </div>
-
-
             </template>
         </section>
+        <div id="billed_container"><img></div>
     </main>
     <footer>
         <h2>FIND OS HER</h2>
@@ -104,13 +107,15 @@
         document.addEventListener("DOMContentLoaded", loadTekst);
 
         async function loadTekst() {
-            let url2 = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/404";
+            let url2 = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/404?_embed";
             let json2 = await fetch(url2);
             tekst = await json2.json();
             console.log("LOADING DONE");
 
             document.querySelector("#titletekst").innerHTML = tekst.content.rendered;
             document.querySelector("#title").textContent = tekst.title.rendered;
+            document.querySelector("#billed_container img").src = tekst._embedded['wp:featuredmedia']['0'].source_url;
+
         }
 
         async function loadPraktisk() {
