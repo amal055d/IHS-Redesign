@@ -52,11 +52,14 @@
             Bank: Broager Sparekasse l Reg: 9797 Konto: 0001116150 l SWIFT: BRSLDK21 l IBAN: DK2597970001116150
         </p>
     </footer>
-    <script src="javascript.js"></script>
+    <!--    <script src="javascript.js"></script>-->
     <script>
         document.addEventListener("DOMContentLoaded", loadOmContent);
+        document.addEventListener("DOMContentLoaded", loadFoldUd);
 
         let omOs;
+        let container = document.querySelector("#fold_ud_section");
+        let temp = document.querySelector("template");
 
         async function loadOmContent() {
             let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/273";
@@ -68,31 +71,25 @@
 
         }
 
-        async function loadOmos() {
+        async function loadFoldUd() {
             let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/posts/?categories=10";
-            let json = await fetch(url);
+            let jsonData = await fetch(url);
+            omOs = await jsonData.json();
+            console.log("LOADING DONE");
 
-            omOsFoldUd = await json.json();
-            vis(json);
-        }
-
-        let container = document.querySelector("#fold_ud_section");
-        let temp = document.querySelector("template");
-
-
-        function vis(omOsFoldUd) {
-            console.log("omOsload");
-
-            omOsFoldUd.forEach(foldUd => {
+            omOs.forEach(idraetsfag => {
 
                 const klon = temp.cloneNode(true).content;
-                klon.querySelector(".om_os_h2").textContent = foldUd.title.rendered;
-                klon.querySelector(".om_os_tekst").innerHTML = foldUd.content.rendered;
+                klon.querySelector(".om_os_h2").textContent = idraetsfag.title.rendered;
+                klon.querySelector(".om_os_tekst").innerHTML = idraetsfag.content.rendered;
 
                 container.appendChild(klon); //klones til DOM
 
             })
         }
+
     </script>
 
-</body></html>
+</body>
+
+</html>
