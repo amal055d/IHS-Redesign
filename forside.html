@@ -80,6 +80,73 @@
             margin: 70px 0;
         }
 
+        /******************************Galleri**/
+
+
+        #galleri_wrapper {
+            width: 100vw;
+            height: 300px;
+        }
+
+        .forside_galleri .wp-block-group__inner-container {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 250px;
+            overflow: hidden;
+            list-style-type: none;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            padding-inline-start: 0;
+
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+
+
+        }
+
+        .forside_galleri figure img {
+            width: 100vw;
+            scroll-snap-type: x mandatory;
+            /*            overflow: scroll;*/
+        }
+
+        .wp-block-group .forside_galleri {
+            transform: translateX(375px);
+            scroll-snap-type: x mandatory;
+
+        }
+
+        #arrow_left {
+            background-image: url(arrow_left.svg);
+            width: 28.66px;
+            height: 50px;
+            /*            margin: 146px 30px;*/
+            background-size: cover;
+            z-index: 1;
+            position: relative;
+            top: 170px;
+            left: 10px;
+            /*            display: none;*/
+        }
+
+
+        #arrow_right {
+            background-image: url(arrow_right.svg);
+            width: 28.66px;
+            height: 50px;
+            /*            margin: 146px 30px;*/
+            background-size: cover;
+            z-index: 1;
+            position: relative;
+            top: -130px;
+            left: 335px;
+            /*            display: none;*/
+        }
+
+
+
+        /******************************Media**/
         @media(min-width: 900px) {
 
             .video_group .wp-block-group__inner-container {
@@ -126,7 +193,6 @@
                 padding: 18px 13px 6px;
             }
         }
-
     </style>
 </head>
 
@@ -144,9 +210,14 @@
             <a href="praktisk_info.html">BOOK EN RUNDVISNING</a>
         </div>
 
-        <section id="galleri">
-            <img>
+        <section id="galleri_wrapper">
+            <div id="arrow_left"></div>
+            <section id="galleri"></section>
+            <div id="arrow_right"></div>
         </section>
+
+
+
     </main>
     <footer>
         <h2>FIND OS HER</h2>
@@ -177,10 +248,16 @@
             console.log("LOADING DONE");
 
             document.querySelector("#indhold").innerHTML = forsiden.content.rendered;
-
+            loadGalleri();
         }
 
-    </script>
-</body>
+        async function loadGalleri() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/425";
+            let jsonData = await fetch(url);
+            forsiden = await jsonData.json();
+            console.log("LOADING DONE");
 
-</html>
+            document.querySelector("#galleri").innerHTML = forsiden.content.rendered;
+        }
+    </script>
+</body></html>
