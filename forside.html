@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IHS</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/mfe4mbx.css">
     <style>
         img {
             width: 100%;
@@ -23,10 +24,12 @@
         .overskrift1 {
             color: #274976;
             padding: 40px 40px 0;
+            font-family: 'Proxima Nova';
         }
 
         .overskrift2 {
             padding: 40px 40px 0;
+            font-family: 'Proxima Nova';
         }
 
         .group1 {
@@ -41,6 +44,7 @@
         p {
             padding: 10px 40px 40px;
             color: white;
+            font-family: 'Proxima Nova';
         }
 
         .forside_video {
@@ -51,6 +55,7 @@
             color: #274976;
             padding: 70px 40px 0;
             text-align: center;
+            font-family: 'Proxima Nova';
         }
 
         a {
@@ -64,7 +69,9 @@
             padding: 15px 10px 10px;
             text-align: center;
             font-size: .7rem;
+            font-family: 'proxima-nova', sans-serif;
             font-weight: 700;
+            font-style: normal;
         }
 
         .knapper {
@@ -108,10 +115,18 @@
 
             .knapper {
                 display: flex;
-                width: 40vw;
+                width: 60vw;
                 margin: 70px auto;
             }
+
+            a {
+                font-size: 1rem;
+                width: 184px;
+                height: 30px;
+                padding: 18px 13px 6px;
+            }
         }
+
     </style>
 </head>
 
@@ -164,5 +179,8 @@
             document.querySelector("#indhold").innerHTML = forsiden.content.rendered;
 
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
