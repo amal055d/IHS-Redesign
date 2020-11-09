@@ -6,6 +6,194 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IHS</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/mfe4mbx.css">
+    <style>
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        figure {
+            display: block;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+        }
+
+        .overskrift1 {
+            color: #274976;
+            padding: 40px 40px 0;
+            font-family: 'Proxima Nova';
+        }
+
+        .overskrift2 {
+            padding: 40px 40px 0;
+            font-family: 'Proxima Nova';
+        }
+
+        .group1 {
+            background-color: #87A4CB;
+            margin-top: -4px;
+        }
+
+        .group2 {
+            background-color: #274976;
+        }
+
+        p {
+            padding: 10px 40px 40px;
+            color: white;
+            font-family: 'Proxima Nova';
+        }
+
+        .forside_video {
+            height: 27vh;
+        }
+
+        .cta_overskrift {
+            color: #274976;
+            padding: 70px 40px 0;
+            text-align: center;
+            font-family: 'Proxima Nova';
+        }
+
+        a {
+            border: 3px solid #FF7F00;
+            background-color: white;
+            color: #FF7F00;
+            width: 140px;
+            height: 20px;
+            margin: 0 auto;
+            text-decoration: none;
+            padding: 15px 10px 10px;
+            text-align: center;
+            font-size: .7rem;
+            font-family: 'proxima-nova', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .knapper {
+            display: flex;
+            width: 100vw;
+            margin: 70px 0;
+        }
+
+        /******************************Galleri**/
+
+
+        #galleri_wrapper {
+            width: 100vw;
+            height: 300px;
+        }
+
+        .forside_galleri .wp-block-group__inner-container {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 250px;
+            overflow: hidden;
+            list-style-type: none;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            padding-inline-start: 0;
+
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+
+
+        }
+
+        .forside_galleri figure img {
+            width: 100vw;
+            scroll-snap-type: x mandatory;
+            /*            overflow: scroll;*/
+        }
+
+        .wp-block-group .forside_galleri {
+            transform: translateX(375px);
+            scroll-snap-type: x mandatory;
+
+        }
+
+        #arrow_left {
+            background-image: url(arrow_left.svg);
+            width: 28.66px;
+            height: 50px;
+            /*            margin: 146px 30px;*/
+            background-size: cover;
+            z-index: 1;
+            position: relative;
+            top: 170px;
+            left: 10px;
+            /*            display: none;*/
+        }
+
+
+        #arrow_right {
+            background-image: url(arrow_right.svg);
+            width: 28.66px;
+            height: 50px;
+            /*            margin: 146px 30px;*/
+            background-size: cover;
+            z-index: 1;
+            position: relative;
+            top: -130px;
+            left: 335px;
+            /*            display: none;*/
+        }
+
+
+
+        /******************************Media**/
+        @media(min-width: 900px) {
+
+            .video_group .wp-block-group__inner-container {
+                display: flex;
+                flex-direction: row-reverse;
+            }
+
+            .group2 .wp-block-group__inner-container {
+                display: block;
+            }
+
+            .forside_video {
+                flex-basis: 80vw;
+                flex-grow: 1;
+                /* max-width: 73vw; */
+                height: 36vw;
+            }
+
+            .group2 {
+                flex-basis: 45vw;
+                flex-grow: 1;
+                max-width: 45vw;
+                height: 36vw;
+            }
+
+            .overskrift1 {
+                padding: 70px 100px 0;
+            }
+
+            .group1 p {
+                padding: 10px 100px 70px;
+            }
+
+            .knapper {
+                display: flex;
+                width: 60vw;
+                margin: 70px auto;
+            }
+
+            a {
+                font-size: 1rem;
+                width: 184px;
+                height: 30px;
+                padding: 18px 13px 6px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -17,10 +205,19 @@
 
         <section id="indhold"></section>
 
+        <div class="knapper">
+            <a href="fag.html">SE VORES FAG</a>
+            <a href="praktisk_info.html">BOOK EN RUNDVISNING</a>
+        </div>
 
-        <section id="galleri">
-            <img>
+        <section id="galleri_wrapper">
+            <div id="arrow_left"></div>
+            <section id="galleri"></section>
+            <div id="arrow_right"></div>
         </section>
+
+
+
     </main>
     <footer>
         <h2>FIND OS HER</h2>
@@ -51,7 +248,16 @@
             console.log("LOADING DONE");
 
             document.querySelector("#indhold").innerHTML = forsiden.content.rendered;
+            loadGalleri();
+        }
 
+        async function loadGalleri() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/425";
+            let jsonData = await fetch(url);
+            forsiden = await jsonData.json();
+            console.log("LOADING DONE");
+
+            document.querySelector("#galleri").innerHTML = forsiden.content.rendered;
         }
     </script>
 </body></html>
