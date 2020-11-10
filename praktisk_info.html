@@ -7,8 +7,83 @@
     <title>IHS</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        p, h1, h2, h3 {
+        body {
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        p,
+        h1,
+        h2,
+        h3 {
             font-family: 'Proxima Nova';
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            background-color: #FFFFFF;
+        }
+
+        .headerbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #FFFFFF;
+        }
+
+        .logo {
+            margin-left: 40%;
+        }
+
+        .logo img {
+            height: 70px;
+
+        }
+
+        .burger {
+            display: inline-block;
+            cursor: pointer;
+            margin-right: 5%;
+        }
+
+        .bar1,
+        .bar2,
+        .bar3 {
+            width: 35px;
+            height: 5px;
+            background-color: #274976;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        /* Rotate first bar */
+        .change .bar1 {
+            -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+            transform: rotate(-45deg) translate(-9px, 6px);
+        }
+
+        /* Fade out the second bar */
+        .change .bar2 {
+            opacity: 0;
+        }
+
+        /* Rotate last bar */
+        .change .bar3 {
+            -webkit-transform: rotate(45deg) translate(-8px, -8px);
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+
+        nav {
+            background: #FFFFFF;
+
+        }
+
+        ul {
+            margin-top: 0;
         }
 
         .container {
@@ -58,15 +133,46 @@
             padding: 40px;
             padding-right: 40px;
         }
-
-
     </style>
 </head>
 
 <body>
     <header>
-        <div id="logo"></div>
-        <div id="burger"></div>
+        <div class="headerbar">
+            <div class="logo"><img src="img/logo.png"></div>
+            <div class="burger" onclick="myFunction(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="https://www.w3schools.com">Højskole</a>
+                    <ul>
+                        <li><a href="#">Specialefag</a></li>
+                        <li><a href="#">Idrætsfag</a>
+                        <li><a href="#">Almene fag</a></li>
+                        <li><a href="#">Interessefag</a></li>
+                        <li><a href="#">Fælles fag</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.w3schools.com">Andre Tilbud</a>
+                </li>
+                <li>
+                    <a href="praktisk_info.html">Praktisk Information</a>
+                </li>
+                <li>
+                    <a href="om_os.html">Om IHS</a>
+                </li>
+                <li>
+                    <a href="https://www.w3schools.com">Kontakt Os</a>
+                </li>
+            </ul>
+        </nav>
+
     </header>
     <main>
         <div id="topcontent">
@@ -101,7 +207,8 @@
             <img src="" alt="">
             <img src="" alt="">
         </div>
-        <p>Idrætshøjskolen Sønderborg l Friheds allé 42 l 6400 Sønderborg l (+45) 7442 1848 l CVR 35902619 l info@ihs.dk
+        <p>
+            Idrætshøjskolen Sønderborg l Friheds allé 42 l 6400 Sønderborg l (+45) 7442 1848 l CVR 35902619 l info@ihs.dk
             Bank: Broager Sparekasse l Reg: 9797 Konto: 0001116150 l SWIFT: BRSLDK21 l IBAN: DK2597970001116150
         </p>
     </footer>
@@ -151,6 +258,11 @@
 
             })
         }
+
+
+        function myFunction(x) {
+            x.classList.toggle("change");
+        } //burgerm menu toggle
     </script>
 
 </body></html>
