@@ -119,8 +119,9 @@
         </section>
     </main>
 
+
     <script>
-        let interessefag;
+        let specialefag;
         let temp = document.querySelector("template");
         let container = document.querySelector("#fold-ud");
 
@@ -128,26 +129,26 @@
         document.addEventListener("DOMContentLoaded", loadFoldUd);
 
         async function loadContent() {
-            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/234";
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/236";
             let jsonData = await fetch(url);
-            interessefag = await jsonData.json();
+            specialefag = await jsonData.json();
             console.log("LOADING DONE");
 
-            document.querySelector("#tekst-container").innerHTML = interessefag.content.rendered;
+            document.querySelector("#tekst-container").innerHTML = specialefag.content.rendered;
 
         }
 
         async function loadFoldUd() {
-            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/posts/?categories=5";
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/posts/?categories=2";
             let jsonData = await fetch(url);
-            interessefag = await jsonData.json();
+            specialefag = await jsonData.json();
             console.log("LOADING DONE");
 
-            interessefag.forEach(interessefag => {
+            specialefag.forEach(specialefag => {
 
                 const klon = temp.cloneNode(true).content;
-                klon.querySelector(".title").textContent = interessefag.title.rendered;
-                klon.querySelector(".tekst").innerHTML = interessefag.content.rendered;
+                klon.querySelector(".title").textContent = specialefag.title.rendered;
+                klon.querySelector(".tekst").innerHTML = specialefag.content.rendered;
 
                 container.appendChild(klon); //klones til DOM
 
