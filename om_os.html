@@ -77,9 +77,24 @@
             display: none;
         }
 
-        .arrow_up {}
+        .arrow_up_1 {
+            background-image: url(arrow_up.svg);
+            background-size: cover;
+            width: 50px;
+            height: 28.66px;
+            position: relative;
+        }
 
-        .arrow_down {}
+        .arrow_down_1 {
+            background-image: url(arrow_down.svg);
+            background-size: cover;
+            width: 50px;
+            height: 28.66px;
+            position: relative;
+            top: 30px;
+            left: 500px;
+
+        }
 
         /*fold ud effekt slut*/
 
@@ -105,7 +120,10 @@
                     <div id="om_os_tekst" class="hide"></div>
                 </div>
             </template>
-            <div id="arrow" class="arrow_down"></div>
+            <div onclick="toggleContent()" id="arrow_1" class="arrow_down_1"></div>
+            <div onclick="toggleContent()" id="arrow_2" class="arrow_down_2"></div>
+            <div onclick="toggleContent()" id="arrow_3" class="arrow_down_3"></div>
+            <div onclick="toggleContent()" id="arrow_4" class="arrow_down_4"></div>
         </section>
 
     </main>
@@ -179,7 +197,6 @@
             })
         }
 
-        document.querySelector(".om_os_h2").addEventListener("click", toggleContent);
 
         function toggleContent() {
             console.log("toggleContent");
@@ -190,9 +207,9 @@
 
             // Hvis indholdet er skjult (true) så skal #arrow have classen .arrow_down, hvis indeholde er synlig skal #arrow have classen arrow_down//
             if (textErSkjult == true) {
-                document.querySelector("#arrow_2").classList = "arrow_down";
+                document.querySelector("#arrow_1").classList = "arrow_down_1";
             } else {
-                document.querySelector("#arrow_2").classList = "arrow_up";
+                document.querySelector("#arrow_2").classList = "arrow_up_2";
             }
         }
 
