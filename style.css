@@ -96,7 +96,7 @@ header {
 /* footer styling */
 
 footer {
-    height: 600px;
+    height: 400px;
     background-color: #274976;
     display: flex;
     flex-direction: column;
@@ -107,6 +107,7 @@ footer {
 
 #some_link a {
     display: flex;
+    padding-top: 5px;
     height: 50px;
     width: 50px;
     border: 4px solid #274976;
@@ -121,6 +122,26 @@ footer {
 .footer_cta {
     font-family: Proxima Nova;
     color: #FF7F00;
-    padding: 30px;
+    padding: 50px;
+    padding-bottom: 45px;
     font-size: 47px;
+}
+
+
+.hoejskolerne {
+    width: 100px;
+    height: 30px;
+    margin-top: 9px;
+
+}
+
+.trustpilot {
+    width: 100px;
+
+}
+
+#hoejskole_trustpilot {
+    display: flex;
+    column-gap: 35px;
+
 }
