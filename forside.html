@@ -88,7 +88,7 @@
             height: 300px;
         }
 
-        .forside_galleri .wp-block-group__inner-container {
+        .blocks-gallery-grid {
             display: flex;
             justify-content: center;
             width: 100vw;
@@ -100,21 +100,16 @@
             padding-inline-start: 0;
 
             overflow-x: scroll;
+            scroll-snap-points-x: repeat(100vh);
             scroll-snap-type: x mandatory;
-
-
         }
 
-        .forside_galleri figure img {
+        .blocks-gallery-item figure {
             width: 100vw;
-            scroll-snap-type: x mandatory;
-            /*            overflow: scroll;*/
         }
 
-        .wp-block-group .forside_galleri {
+        .blocks-gallery-item {
             transform: translateX(375px);
-            scroll-snap-type: x mandatory;
-
         }
 
         #arrow_left {
@@ -130,7 +125,6 @@
             /*            display: none;*/
         }
 
-
         #arrow_right {
             background-image: url(arrow_right.svg);
             width: 28.66px;
@@ -142,6 +136,16 @@
             top: -130px;
             left: 335px;
             /*            display: none;*/
+        }
+
+
+        .hoejskolerne {
+            width: 100px;
+            height: 28.19px;
+        }
+
+        .trustpilot {
+            width: 100px
         }
 
 
@@ -216,11 +220,9 @@
             <div id="arrow_right"></div>
         </section>
 
-
-
     </main>
     <footer>
-        <h2>FIND OS HER</h2>
+        <h2 class="footer_cta">FIND OS HER</h2>
         <div id="some_link">
             <div></div>
             <div></div>
@@ -230,10 +232,10 @@
             <div></div>
         </div>
         <div id="højskole_trustpilot">
-            <img src="">
-            <img src="">
+            <img class="hoejskolerne" src="hoejskolerne.png">
+            <img class="trustpilot" src="trustpilot.png">
         </div>
-        <p> lorem ipsum blasdajsf oajshfndkajsfhn aosid aojsfh </p>
+        <p class="footer_tekst"></p>
     </footer>
     <script src="javascript.js"></script>
     <script>
@@ -249,6 +251,7 @@
 
             document.querySelector("#indhold").innerHTML = forsiden.content.rendered;
             loadGalleri();
+            loadFooter();
         }
 
         async function loadGalleri() {
@@ -258,6 +261,15 @@
             console.log("LOADING DONE");
 
             document.querySelector("#galleri").innerHTML = forsiden.content.rendered;
+        }
+
+        async function loadFooter() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/455";
+            let jsonData = await fetch(url);
+            forsiden = await jsonData.json();
+            console.log("LOADING DONE");
+
+            document.querySelector(".footer_tekst").innerHTML = forsiden.content.rendered;
         }
     </script>
 </body></html>
