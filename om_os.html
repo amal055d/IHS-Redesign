@@ -6,6 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IHS</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /*styling*/
+        .afsnit_1 {
+            background-color: #274976;
+            padding: 5vw 20vw;
+        }
+
+        .afsnit_1 p {
+            color: white;
+        }
+
+        .afsnit_2 {
+            background-color: #87A4CB;
+            padding: 7vw 10vw 0;
+        }
+
+        .afsnit_2 h2 {
+            color: #274976;
+        }
+
+        .afsnit_2 p {
+            color: white;
+        }
+
+
+        #indhold_2 {
+            display: flex;
+        }
+
+        figure {
+            display: block;
+            margin: 0;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+        }
+
+        #fold_ud_section {
+            margin: 10vw 25vw;
+        }
+
+        #fold_ud_section h2 {
+            color: #274976;
+            background-color: #87A4CB;
+            padding: 1vw 0 1vw 2vw;
+        }
+
+        #fold_ud_section p {
+            color: white;
+            background-color: #87A4CB;
+            padding: 1vw 3vw 1vw 3vw;
+        }
+
+        #fold_ud_section h3 {
+            color: white;
+            padding: 1vw 3vw 1vw 3vw;
+            background-color: #87A4CB;
+        }
+
+        #fold_ud_section .sidste_p {
+            margin-bottom: 1vw;
+            padding-bottom: 2vw;
+        }
+
+        /*styling slut*/
+        /*fold ud effekt*/
+        .hide {
+            display: none;
+        }
+
+        .arrow_up {}
+
+        .arrow_down {}
+
+        /*fold ud effekt slut*/
+
+    </style>
 </head>
 
 <body>
@@ -17,15 +95,17 @@
         <section id="indhold">
 
         </section>
+        <section id="indhold_2">
+
+        </section>
         <section id="fold_ud_section">
             <template>
                 <div class="container">
                     <h2 class="om_os_h2"></h2>
-                    <div class="om_os_tekst"></div>
+                    <div id="om_os_tekst" class="hide"></div>
                 </div>
-
-
             </template>
+            <div id="arrow" class="arrow_down"></div>
         </section>
 
     </main>
@@ -55,6 +135,7 @@
     <!--    <script src="javascript.js"></script>-->
     <script>
         document.addEventListener("DOMContentLoaded", loadOmContent);
+        document.addEventListener("DOMContentLoaded", loadOmContent2);
         document.addEventListener("DOMContentLoaded", loadFoldUd);
 
         let omOs;
@@ -71,21 +152,48 @@
 
         }
 
+        async function loadOmContent2() {
+            let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/pages/410";
+            let jsonData = await fetch(url);
+            omOs = await jsonData.json();
+            console.log("LOADING DONE");
+
+            document.querySelector("#indhold_2").innerHTML = omOs.content.rendered;
+
+        }
+
         async function loadFoldUd() {
             let url = "http://signemariemathiasen.dk/kea/2_sem/09.05.01_ihs/wordpress/wp-json/wp/v2/posts/?categories=10";
             let jsonData = await fetch(url);
             omOs = await jsonData.json();
             console.log("LOADING DONE");
 
-            omOs.forEach(idraetsfag => {
+            omOs.forEach(kategori => {
 
                 const klon = temp.cloneNode(true).content;
-                klon.querySelector(".om_os_h2").textContent = idraetsfag.title.rendered;
-                klon.querySelector(".om_os_tekst").innerHTML = idraetsfag.content.rendered;
+                klon.querySelector(".om_os_h2").textContent = kategori.title.rendered;
+                klon.querySelector("#om_os_tekst").innerHTML = kategori.content.rendered;
 
                 container.appendChild(klon); //klones til DOM
 
             })
+        }
+
+        document.querySelector(".om_os_h2").addEventListener("click", toggleContent);
+
+        function toggleContent() {
+            console.log("toggleContent");
+            document.querySelector("#om_os_tekst").classList.toggle("hide");
+
+            // her spørger jeg om #om_os_tekst har classen .hide //
+            let textErSkjult = this.classList.contains("hide");
+
+            // Hvis indholdet er skjult (true) så skal #arrow have classen .arrow_down, hvis indeholde er synlig skal #arrow have classen arrow_down//
+            if (textErSkjult == true) {
+                document.querySelector("#arrow_2").classList = "arrow_down";
+            } else {
+                document.querySelector("#arrow_2").classList = "arrow_up";
+            }
         }
 
     </script>
